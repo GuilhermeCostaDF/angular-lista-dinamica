@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop'
 
 export interface Character{
-  nome: string
-  image: string
-  fatality: string
+  nome: string;
+  image: string;
+  fatality: string;
 }
 
 @Component({
@@ -13,13 +13,18 @@ export interface Character{
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'lista-dinamica';
 
   myList: Character[] = [];
   confirmList: Character[] =[];
 
   constructor(private httpClient: HttpClient){
+
+    console.log(this.myList)
+  }
+
+  ngOnInit(): void {
     this.getMyList()
   }
 
